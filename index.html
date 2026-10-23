@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ladyme Botecario – Software QA Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFFFFF;--surface:#FFFFFF;--ink:#0D1B2A;--muted:#3D5A80;--line:#C8D9E6;--accent:#3D5A80;--teal:#4B6B7C;--hero1:#D8E6F2;--hero2:#FFFFFF;--b1:#EAF2F8;--b2:#D8E6F2;--foot:#0D1B2A;--foot-ink:#EAF2F8;--c1:#3D5A80;--c2:#4B6B7C;--c3:#98B4C7;--pass:#17734F;--pass-bg:#DDF0E6;--bug:#B4382C;--bug-bg:#F8E1DD;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0D1B2A;--surface:#1B263B;--ink:#EAF2F8;--muted:#98B4C7;--line:#3D5A80;--accent:#98B4C7;--teal:#98B4C7;--hero1:#1B263B;--hero2:#0D1B2A;--b1:#1B263B;--b2:#16304A;--foot:#1B263B;--foot-ink:#EAF2F8;--c1:#98B4C7;--c2:#4B6B7C;--c3:#D8E6F2;--pass:#5CCB9A;--pass-bg:#173A2B;--bug:#F08A7D;--bug-bg:#3F1F1B;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0D1B2A;--surface:#1B263B;--ink:#EAF2F8;--muted:#98B4C7;--line:#3D5A80;--accent:#98B4C7;--teal:#98B4C7;--hero1:#1B263B;--hero2:#0D1B2A;--b1:#1B263B;--b2:#16304A;--foot:#1B263B;--foot-ink:#EAF2F8;--c1:#98B4C7;--c2:#4B6B7C;--c3:#D8E6F2;--pass:#5CCB9A;--pass-bg:#173A2B;--bug:#F08A7D;--bug-bg:#3F1F1B;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.65 "Public Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque",Georgia,sans-serif;line-height:1.15;margin:0}
+a:focus-visible,summary:focus-visible{outline:3px solid var(--teal);outline-offset:3px;border-radius:4px}
+.wrap{max-width:62rem;margin:0 auto;padding:0 1.25rem}
+.top{background:linear-gradient(165deg,var(--hero1),var(--hero2))}
+header.nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 0;gap:1rem;flex-wrap:wrap}
+.nav strong{font-family:"Bricolage Grotesque",sans-serif;font-size:1.1rem}
+.nav nav{display:flex;gap:1.25rem;font-size:.95rem}
+.nav nav a{color:var(--muted);text-decoration:none;font-weight:500}
+.nav nav a:hover{color:var(--ink)}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:2.5rem;align-items:center;padding:2.5rem 0 4.5rem}
+.hero h1{font-size:clamp(2.4rem,6vw,4rem);font-weight:700;letter-spacing:-.02em}
+.hero p.lead{font-size:1.15rem;color:var(--muted);max-width:34rem;margin:1.25rem 0 1.75rem}
+.btns{display:flex;gap:.75rem;flex-wrap:wrap}
+.btn{display:inline-block;padding:.7rem 1.2rem;border-radius:8px;font-weight:600;text-decoration:none;border:1.5px solid var(--accent);color:var(--ink)}
+.btn.primary{background:var(--accent);color:var(--bg);border-color:var(--accent)}
+.report{background:var(--surface);border:1.5px solid var(--accent);border-radius:10px;padding:1.25rem;font-size:.92rem;box-shadow:8px 8px 0 var(--c3)}
+.report .head{display:flex;justify-content:space-between;align-items:center;gap:.5rem;margin-bottom:.75rem;color:var(--muted)}
+.chip{font-weight:600;font-size:.8rem;padding:.15rem .6rem;border-radius:99px}
+.chip.fail{background:var(--bug-bg);color:var(--bug)}
+.chip.ok{background:var(--pass-bg);color:var(--pass)}
+.report h3{font-size:1.1rem;margin-bottom:.75rem}
+.report dl{margin:0;display:grid;grid-template-columns:6.5rem 1fr;gap:.5rem .75rem}
+.report dt{color:var(--teal);font-weight:600}
+.report dd{margin:0}
+.report .foot{margin-top:1rem;padding-top:.75rem;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:.5rem;flex-wrap:wrap;color:var(--muted);font-size:.82rem}
+section{padding:4rem 0}
+section.b1{background:var(--b1)}
+section.b2{background:var(--b2)}
+h2{font-size:clamp(1.6rem,3.5vw,2.2rem);margin-bottom:1.75rem}
+h2::after{content:"";display:block;width:3rem;height:4px;border-radius:4px;background:var(--teal);margin-top:.6rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1.5rem}
+.grid>div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:1.25rem 1.25rem 1rem;border-top:5px solid var(--c1)}
+.grid>div:nth-child(2){border-top-color:var(--c2)}
+.grid>div:nth-child(3){border-top-color:var(--c3)}
+.grid h3{font-size:1.05rem;margin-bottom:.5rem}
+.grid ul{margin:0;padding-left:1.1rem;color:var(--muted)}
+.grid li{margin-bottom:.25rem}
+.sub{margin:2.5rem 0 1rem;font-size:1.05rem}
+.tags{display:flex;flex-wrap:wrap;gap:.5rem}
+.tags span{padding:.3rem .8rem;border-radius:6px;font-size:.92rem;font-weight:500}
+.t1{background:#3D5A80;color:#fff}
+.t2{background:#4B6B7C;color:#fff}
+.t3{background:#C8D9E6;color:#0D1B2A}
+.role{background:var(--surface);border:1px solid var(--line);border-left:6px solid var(--teal);border-radius:10px;padding:1.5rem}
+.role .meta{color:var(--muted);margin:.25rem 0 1rem}
+.role ul{margin:0;padding-left:1.1rem}
+.role li{margin-bottom:.5rem;max-width:46rem}
+details{border-bottom:1px solid var(--line);padding:1rem 0}
+summary{cursor:pointer;font-weight:600;color:var(--accent)}
+details p{color:var(--muted);margin:.6rem 0 0;max-width:46rem}
+footer{background:var(--foot);color:var(--foot-ink);padding:3.5rem 0 4rem}
+footer h2{font-size:1.8rem;margin-bottom:.75rem}
+footer h2::after{background:#98B4C7}
+footer p{margin:.4rem 0;color:#C8D9E6}
+footer a{color:#fff}
+@media (max-width:760px){.hero{grid-template-columns:1fr;padding-bottom:3rem}.report dl{grid-template-columns:5.5rem 1fr}}
+@media (prefers-reduced-motion:no-preference){.report{animation:in .6s ease-out both}@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}}
+</style>
+</head>
+<body>
+<div class="top">
+<div class="wrap">
+<header class="nav">
+<strong>Ladyme Botecario</strong>
+<nav aria-label="Sections"><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#approach">Approach</a><a href="#contact">Contact</a></nav>
+</header>
+<div class="hero">
+<div>
+<h1>I find the bugs before your users do.</h1>
+<p class="lead">I’m Ladyme, a Software QA Engineer with 4 years of experience testing web and mobile applications in Agile teams. I design test cases, run regression suites, and report defects developers can act on quickly.</p>
+<div class="btns">
+<a class="btn primary" href="#contact">Get in touch</a>
+<a class="btn" href="#experience">See my experience</a>
+</div>
+</div>
+<aside class="report" aria-label="Sample bug report">
+<div class="head"><span>Sample bug report</span><span class="chip fail">Open</span></div>
+<h3>Applicant status stays “In review” after offer is accepted</h3>
+<dl>
+<dt>Module</dt><dd>Recruitment</dd>
+<dt>Steps</dt><dd>1. Open an applicant with an offer sent.<br>2. Mark the offer as accepted.<br>3. Return to the applicant list.</dd>
+<dt>Expected</dt><dd>Status changes to “Hired”.</dd>
+<dt>Actual</dt><dd>Status still shows “In review”.</dd>
+<dt>Severity</dt><dd>Major</dd>
+</dl>
+<div class="foot"><span>Web · Chrome, Edge</span><span>Retest after fix: <span class="chip ok">Pass</span></span></div>
+</aside>
+</div>
+</div>
+</div>
+
+<main>
+<section id="skills" class="b1">
+<div class="wrap">
+<h2>What I test and how</h2>
+<div class="grid">
+<div><h3>Testing types</h3><ul><li>Regression, smoke, sanity</li><li>Integration and UAT</li><li>Exploratory testing</li></ul></div>
+<div><h3>Test design</h3><ul><li>Test plans, scenarios, and cases</li><li>Test data preparation</li><li>Requirements traceability</li></ul></div>
+<div><h3>Defects and process</h3><ul><li>Defect tracking and reporting</li><li>Agile/Scrum and Waterfall</li><li>Sprint reviews and stand-ups</li></ul></div>
+</div>
+<h3 class="sub">Tools and platforms</h3>
+<div class="tags">
+<span class="t1">JIRA</span><span class="t1">TestRail</span><span class="t1">Azure DevOps</span><span class="t2">Selenium (running scripts)</span><span class="t2">Playwright (running scripts)</span><span class="t2">JMeter (basic)</span><span class="t2">SQL (validation queries)</span><span class="t3">MS Excel</span><span class="t3">Web</span><span class="t3">Android</span><span class="t3">iOS</span><span class="t3">Chrome, Edge, Firefox, Safari</span>
+</div>
+</div>
+</section>
+
+<section id="experience">
+<div class="wrap">
+<h2>Experience</h2>
+<article class="role">
+<h3>Software QA Engineer, Stratpoint Technologies Inc.</h3>
+<p class="meta">September 2022 to present</p>
+<ul>
+<li>Plan and run manual tests for web and mobile applications, from test plans and scenarios through execution.</li>
+<li>Test HR system projects, including the Recruitment module, working through the full testing lifecycle in Scrum.</li>
+<li>Run functional, regression, integration, smoke, and sanity testing to keep releases within quality standards.</li>
+<li>Prepare test data sets that match each test case.</li>
+<li>Report defects and work with developers and business analysts to resolve them within sprint deadlines.</li>
+<li>Keep test documentation current, with traceability from requirements to test cases.</li>
+</ul>
+</article>
+</div>
+</section>
+
+<section id="approach" class="b2">
+<div class="wrap">
+<h2>How I approach quality</h2>
+<details open><summary>Start from the requirement</summary><p>Every test case traces back to a requirement, so gaps in coverage show up before testing starts.</p></details>
+<details><summary>Write bug reports people can act on</summary><p>Clear steps, expected versus actual behavior, severity, and the environment tested, so a developer can reproduce the issue on the first try.</p></details>
+<details><summary>Stay close to the team</summary><p>I join stand-ups and sprint reviews so testing stays aligned with what is being built and what changed.</p></details>
+</div>
+</section>
+
+<section>
+<div class="wrap">
+<h2>Education</h2>
+<p><strong>BS in Information Technology, Cum Laude</strong><br>Polytechnic University of the Philippines, Sta. Maria, Bulacan Campus · 2018 to 2022</p>
+</div>
+</section>
+</main>
+
+<footer id="contact">
+<div class="wrap">
+<h2>Let’s work together</h2>
+<p>Based in Santa Maria, Bulacan, Philippines.</p>
+<p><a href="mailto:ladymebotecario@gmail.com">ladymebotecario@gmail.com</a><br><a href="https://linkedin.com/in/ladyme-botecario" rel="noopener">linkedin.com/in/ladyme-botecario</a></p>
+</div>
+</footer>
+</body>
+</html>
